@@ -45,25 +45,25 @@ public class JsonPlaceHolderAPITest {
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmPostNoPosts_entaoDeveRetornarStatusCode201() {
         given().
-                contentType("application/json").
-                body(post).
-                when().
-                post("posts").
-                then().
-                statusCode(201);
+             contentType("application/json").
+             body(post).
+        when().
+             post("posts").
+        then().
+             statusCode(201);
 
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmPutNoPosts_entaoDeveRetornarStatusCode200() {
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                body(post).
-                when().
-                put("posts/{id}").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+             body(post).
+        when().
+             put("posts/{id}").
+        then().
+             statusCode(200);
 
     }
 
@@ -72,13 +72,13 @@ public class JsonPlaceHolderAPITest {
 
         String title = "{  \"title\":\"" +post.getTitle()+"\"}";
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                body(title).
-                when().
-                patch("posts/{id}").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+             body(title).
+        when().
+             patch("posts/{id}").
+        then().
+             statusCode(200);
 
     }
 
@@ -86,12 +86,12 @@ public class JsonPlaceHolderAPITest {
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmDeleteNoPosts_entaoDeveRetornarStatusCode200() {
 
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                when().
-                delete("posts/{id}").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+        when().
+             delete("posts/{id}").
+        then().
+             statusCode(200);
 
     }
 
@@ -99,12 +99,12 @@ public class JsonPlaceHolderAPITest {
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoPostsPorId_entaoDeveRetornarStatusCode200() {
 
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                when().
-                get("posts?userId={id}").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+        when().
+             get("posts?userId={id}").
+        then().
+             statusCode(200);
 
     }
 
@@ -112,12 +112,12 @@ public class JsonPlaceHolderAPITest {
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoPostsPorComments_entaoDeveRetornarStatusCode200() {
 
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                when().
-                get("posts/{id}/comments").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+        when().
+             get("posts/{id}/comments").
+        then().
+             statusCode(200);
 
     }
 
@@ -125,12 +125,12 @@ public class JsonPlaceHolderAPITest {
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoAlbumPorPhotos_entaoDeveRetornarStatusCode200() {
 
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                when().
-                get("albums/{id}/photos").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+        when().
+             get("albums/{id}/photos").
+        then().
+             statusCode(200);
 
     }
 
@@ -138,12 +138,12 @@ public class JsonPlaceHolderAPITest {
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoUsersPorAlbum_entaoDeveRetornarStatusCode200() {
 
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                when().
-                get("users/{id}/albums").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+        when().
+             get("users/{id}/albums").
+        then().
+             statusCode(200);
 
     }
 
@@ -151,12 +151,12 @@ public class JsonPlaceHolderAPITest {
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoUsersPorTodos_entaoDeveRetornarStatusCode200() {
 
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                when().
-                get("users/{id}/todos").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+        when().
+             get("users/{id}/todos").
+        then().
+             statusCode(200);
 
     }
 
@@ -164,12 +164,12 @@ public class JsonPlaceHolderAPITest {
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoUsersPorPosts_entaoDeveRetornarStatusCode200() {
 
         given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-                when().
-                get("users/{id}/posts").
-                then().
-                statusCode(200);
+             contentType("application/json").
+             pathParams("id", post.getId()).
+        when().
+             get("users/{id}/posts").
+        then().
+             statusCode(200);
 
     }
    
