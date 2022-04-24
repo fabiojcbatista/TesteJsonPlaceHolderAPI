@@ -172,40 +172,5 @@ public class JsonPlaceHolderAPITest {
                 statusCode(200);
 
     }
-
-    /*
-
-
-
-
-    //patch
-    https://jsonplaceholder.typicode.com/posts/1
-    title: 'foo',
-
-    output
-
-    {
-        id: 1,
-                title: 'foo',
-            body: '...',
-            userId: 1
-    }
-
-
-
-    // This will return all the posts that belong to the first user
-    fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
-
-
-
-    // This is equivalent to /comments?postId=1
-    https://jsonplaceholder.typicode.com/posts/1/comments
-    https://jsonplaceholder.typicode.com/albums/1/photos
-    https://jsonplaceholder.typicode.com/users/1/albums
-    https://jsonplaceholder.typicode.com/users/1/todos
-    https://jsonplaceholder.typicode.com/users/1/posts
-
-*/
-
-
+   
 }
