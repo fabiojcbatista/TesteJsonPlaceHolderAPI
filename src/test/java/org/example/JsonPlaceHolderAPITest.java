@@ -23,13 +23,13 @@ public class JsonPlaceHolderAPITest {
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetPosts_entaoDeveRetornarStatusCode200EBody() {
       
-        Response response = given().
-                contentType("application/json").
-        when().
-                get("posts").
-        then().
-                extract().
-                response();
+        Response response = given()
+                .contentType("application/json")
+        .when()
+                .get("posts")
+        .then()
+                .extract()
+                .response();
 
         Assert.assertEquals(200, response.statusCode());
         Assert.assertEquals("qui est esse", response.jsonPath().getString("title[1]"));
@@ -40,26 +40,26 @@ public class JsonPlaceHolderAPITest {
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetPosts_entaoDeveRetornarStatusCode200EBodySPEC() {
       
-        given().
-                spec(Request.get()).
-        when().
-                get("posts").
-        then().
-                spec(org.example.headers.Response.get());
+        given()
+                .spec(Request.get())
+        .when()
+                .get("posts")
+        .then()
+                .spec(org.example.headers.Response.get());
     
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetComments_entaoDeveRetornarStatusCode200EBody() {
       
-        Response response = given().
-                contentType("application/json").
-                param("postId", "2").
-        when().
-                get("comments").
-        then().
-                extract().
-                response();
+        Response response = given()
+                .contentType("application/json")
+                .param("postId", "2")
+        .when()
+                get("comments")
+        .then()
+                .extract()
+                .response();
 
         Assert.assertEquals(200, response.statusCode());
         Assert.assertEquals("Meghan_Littel@rene.us", response.jsonPath().getString("email[3]"));
