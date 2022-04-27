@@ -56,7 +56,7 @@ public class JsonPlaceHolderAPITest {
                 .contentType("application/json")
                 .param("postId", "2")
         .when()
-                get("comments")
+                .get("comments")
         .then()
                 .extract()
                 .response();
@@ -65,17 +65,34 @@ public class JsonPlaceHolderAPITest {
         Assert.assertEquals("Meghan_Littel@rene.us", response.jsonPath().getString("email[3]"));
     
     }
+
+
+    @Test
+    public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetComments_entaoDeveRetornarStatusCode200EBodySPEC() {
+      
+        Response response = given()
+                .spec(Request.get())
+        .when()
+                .get("comments")
+        .then()
+                .spec(org.example.headers.Response.get())
+                .extract()
+                .response();                ;
+       
+        Assert.assertEquals("Lew@alysha.tv", response.jsonPath().getString("email[3]"));
+    
+    }
    
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetPostsPorId_entaoDeveRetornarStatusCode200() {
-        given().
-                contentType("application/json").
-                pathParams("id", post.getId()).
-        when().
-                get("posts/{id}").
-        then().
-                statusCode(200).
-                contentType("application/json");
+        given()
+                .contentType("application/json")
+                .pathParams("id", post.getId())
+        .when()
+                .get("posts/{id}")
+        .then()
+                .statusCode(200)
+                .contentType("application/json");
 
     }
 
@@ -88,13 +105,13 @@ public class JsonPlaceHolderAPITest {
         "  \"body\": \"bar\",\n" +
         "  \"userId\": \"1\" \n}";
        
-        Response response = given().
-             contentType("application/json").
-             body(requestBody).
-        when().
-             post("posts").
-        then().
-             extract().response();
+        Response response = given()
+             .contentType("application/json")
+             .body(requestBody)
+        .when()
+             .post("posts")
+        .then()
+             .extract().response();
 
         Assert.assertEquals(201, response.statusCode());
         Assert.assertEquals("foo", response.jsonPath().getString("title"));
@@ -107,14 +124,14 @@ public class JsonPlaceHolderAPITest {
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmPutNoPosts_entaoDeveRetornarStatusCode200() {
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-             body(post).
-        when().
-             put("posts/{id}").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+             .pathParams("id", post.getId())
+             .body(post)
+        .when()
+             .put("posts/{id}")
+        .then()
+             .statusCode(200);
 
     }
 
@@ -140,105 +157,131 @@ public class JsonPlaceHolderAPITest {
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmPatchNoPosts_entaoDeveRetornarStatusCode200() {
 
         String title = "{  \"title\":\"" +post.getTitle()+"\"}";
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-             body(title).
-        when().
-             patch("posts/{id}").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+             .pathParams("id", post.getId())
+             .body(title)
+        .when()
+             .patch("posts/{id}")
+        .then()
+             .statusCode(200);
 
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmDeleteNoPosts_entaoDeveRetornarStatusCode200() {
 
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-        when().
-             delete("posts/{id}").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+             .pathParams("id", post.getId())
+        .when()
+             .delete("posts/{id}")
+        .then()
+             .statusCode(200);
 
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoPostsPorId_entaoDeveRetornarStatusCode200() {
 
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-        when().
-             get("posts?userId={id}").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+             .pathParams("id", post.getId())
+        .when()
+             .get("posts?userId={id}")
+        .then()
+             .statusCode(200);
 
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoPostsPorComments_entaoDeveRetornarStatusCode200() {
 
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-        when().
-             get("posts/{id}/comments").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+             .pathParams("id", post.getId())
+        .when()
+             .get("posts/{id}/comments")
+        .then()
+             .statusCode(200);
 
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoAlbumPorPhotos_entaoDeveRetornarStatusCode200() {
 
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-        when().
-             get("albums/{id}/photos").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+            .pathParams("id", post.getId())
+        .when()
+             .get("albums/{id}/photos")
+        .then()
+             .statusCode(200);
 
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoUsersPorAlbum_entaoDeveRetornarStatusCode200() {
 
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-        when().
-             get("users/{id}/albums").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+             .pathParams("id", post.getId())
+        .when()
+             .get("users/{id}/albums")
+        .then()
+             .statusCode(200);
 
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoUsersPorTodos_entaoDeveRetornarStatusCode200() {
 
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-        when().
-             get("users/{id}/todos").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+             .pathParams("id", post.getId())
+       .when()
+             .get("users/{id}/todos")
+        .then()
+             .statusCode(200);
+
+    }
+
+    @Test
+    public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoUsersPorTodos_entaoDeveRetornarStatusCode200SPEC() {
+
+        given()
+             .spec(Request.get())
+             .pathParams("id", post.getId())
+       .when()
+             .get("users/{id}/todos")
+        .then()
+             .spec(org.example.headers.Response.get());
 
     }
 
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoUsersPorPosts_entaoDeveRetornarStatusCode200() {
 
-        given().
-             contentType("application/json").
-             pathParams("id", post.getId()).
-        when().
-             get("users/{id}/posts").
-        then().
-             statusCode(200);
+        given()
+             .contentType("application/json")
+             .pathParams("id", post.getId())
+        .when()
+             .get("users/{id}/posts")
+        .then()
+             .statusCode(200);
+
+    }
+
+    @Test
+    public void dadoAPIJsonPlaceHolder_quandoRealizarUmGetNoUsersPorPosts_entaoDeveRetornarStatusCode200SPEC() {
+
+        given()
+             .spec(Request.get())
+             .pathParams("id", post.getId())
+        .when()
+             .get("users/{id}/posts")
+        .then()
+             .spec(org.example.headers.Response.get());
 
     }
    
