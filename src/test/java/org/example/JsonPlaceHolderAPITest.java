@@ -135,6 +135,20 @@ public class JsonPlaceHolderAPITest {
 
     }
 
+
+    @Test
+    public void dadoAPIJsonPlaceHolder_quandoRealizarUmPutNoPosts_entaoDeveRetornarStatusCode200SPEC() {
+        given()
+             .spec(Request.get())
+             .pathParams("id", post.getId())
+             .body(post)
+        .when()
+             .put("posts/{id}")
+        .then()
+        .spec(org.example.headers.Response.get());
+
+    }
+
     @Test
     public void dadoAPIJsonPlaceHolder_quandoRealizarUmPutNoPosts_entaoDeveRetornarStatusCode200ComBody() {
         Response response = given()
